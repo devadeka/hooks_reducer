@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useReducer } from 'react';
 
 const StoreContext = useContext({});
 
@@ -14,10 +14,13 @@ function reducer(state, action) {
 }
 
 const Store = (children) => {
+
+  const [state, dispatch] = userReducer(reducer, initialState);
+
   return(
-    <div>
+    <StoreContext.Provider value={[state, dispatch]}>
       {children}
-    </div>
+    </StoreContext.Provider>
   )
 }
 
