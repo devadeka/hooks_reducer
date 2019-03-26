@@ -1,8 +1,8 @@
-import React, { useContext, useReducer } from 'react';
-
-const StoreContext = useContext({});
+import React, { createContext, useReducer } from 'react';
 
 const initialState = {fruits: []};
+
+export const StoreContext = createContext('initialState');
 
 function reducer(state, action) {
   switch (action.type) {
@@ -13,9 +13,9 @@ function reducer(state, action) {
   }
 }
 
-const Store = (children) => {
+const Store = ({ children }) => {
 
-  const [state, dispatch] = userReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return(
     <StoreContext.Provider value={[state, dispatch]}>

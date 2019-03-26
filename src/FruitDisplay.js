@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { StoreContext } from './Store';
 
-const fruits = ['apple', 'bannana', 'orange'];
+// const fruits = ['apple', 'bannana', 'orange'];
 
 const FruitDisplay = () =>{
+
+  const [state] = useContext(StoreContext); 
+  console.log(state.fruits);   
+
   return(
     <ul>
-      {fruits.map( (fruit, index) => <li key={index}>{fruit}</li>)}
+      {state.fruits.map( (fruit, index) => <li key={index}>{fruit}</li>)}
     </ul>
   )
 }
